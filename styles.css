@@ -1,0 +1,75 @@
+/*
+   Web Design Project
+   stage 2.9
+   
+   Author: Michael Baird
+   Date: 1/03/2026
+   Filename: styles.css
+*/
+
+html {
+   padding-left: 30px;
+   background-color: hsla(40,80%,75%,0.5);
+   font-family: Arial;
+}
+
+header {
+   text-align: center;
+   font-family: Impact, Arial;
+   font-weight: Bold;
+   font-size: 3em;
+   background-color:bisque;
+}
+
+nav ul {
+   font-size: 1.2em;
+   color: white;
+   background-color: black;
+   text-align: center;
+   text-decoration-color: blue;
+   padding: auto;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+main section {
+   font-size: 2.5em;
+   font-family: Impact, Arial;
+   text-align: center;
+   margin: auto;
+   padding: auto; 
+   outline-width: 3px;
+   outline-style: dashed;
+   outline-color: gray;
+}
+
+h2 {
+    font-size: 1em;
+    font-style: normal;
+}
+
+p {
+    font-size: 0.5em;
+    font-style: normal;
+}
+
+footer {
+    font-size: 1em;
+    text-align: center;
+    color: beige;
+    background-color: black;
+
+}
+
+:any-link {
+   color: ivory;
+   text-decoration: none;
+}
+
+:link:hover {
+   text-decoration: underline;
+}
