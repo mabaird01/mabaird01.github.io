@@ -61,3 +61,5 @@ This project is licensed under the MIT License. See the LICENSE file for details
 Michael Baird
 Email: micbai6305@students.ecpi.edu
 Portfolio: mabaird01.github.io
+
+![page snip](<Screenshot 2026-01-24 120141-1.png>)
