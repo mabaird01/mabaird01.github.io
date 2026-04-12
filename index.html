@@ -3,21 +3,23 @@
 
   <head>
     <!--
-   Web Design Project
-   stage 3.9
+   JavaScript Final Project
+   stage 1.10
    
    Author: Michael Baird
-   Date: 1/03/2026
+   Date: 4/12/2026
    Filename: index.html
    -->
     <meta charset="utf-8" />
-    <title>Workspace Creation</title>
+    <title>github prep and structural implementation</title>
     <link href="styles.css"rel="stylesheet" >
     <link href="formstyles.css" rel="stylesheet">
     <script src="formtest.js"></script>
 
 </head>
-<header>This is my Project site</header>
+<header>
+    <h1 id="welcomeMessage">Welcome to the Page!</h1>
+</header>
 <heading></heading>
   <body>
     <nav>
@@ -36,7 +38,7 @@
     <main>
         <section id="aboutme">
             <h2>About Me</h2>
-            <p></p>
+            <p>I am a new student in the software development program with a fair amount of experience in cybersecurity and will be exploring software development.</p>
         </section>
         <section id="projects">
         <table>
@@ -54,6 +56,11 @@
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>SDC355</td>
+                    <td>JavaScript Final Project</td>
+                    <td>Page incorporating JavaScript functionality. Making it interactive and engaging.</td>
+                </tr>
                 <tr>
                     <td>SDC260</td>
                     <td>Web Development Final Project</td>
@@ -103,6 +110,19 @@
         </section>
     </main>
   </body>
+      <script>
+        // Prompt the user for their name and store it in a variable
+        var userName = prompt("What is your name?");
+
+        // Check if the user entered a name
+        if (userName) {
+            // Dynamically update the message at the top of the page to welcome the user
+            document.getElementById("welcomeMessage").textContent = "Welcome, " + userName + "!";
+        } else {
+            // If the user cancels or doesn't enter anything, display a default message
+            document.getElementById("welcomeMessage").textContent = "Welcome, Guest!";
+        }
+        </script>
     </br>
     </br> 
   <footer>&mdash; Footer &mdash;</footer>
