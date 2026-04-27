@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
   <!--
-    JavaScript Final Project 2.9 Control Flow Implementation
+    JavaScript Final Project 3.9 creating and referencing DOM elements
     Author: Michael Baird
     Date: 4/20/2026
     Filename: index.html
   -->
   <meta charset="utf-8" />
-  <title>Control Flow Implementation</title>
+  <title>creating and referencing DOM elements</title>
 
   <link href="styles.css" rel="stylesheet">
 </head>
 
 <body>
-
+  <!-- notification will be inserted here -->
   <!-- HEADER -->
   <header>
     <h1 id="welcomeMessage">Welcome to the Page!</h1>
@@ -107,11 +107,11 @@
       <form id="contact-form">
         <label for="name">Name:</label><br>
         <input type="text" id="name" required><br><br>
-
+        <input type="email" name="email" placeholder="Your Email" required /><br>
         <label for="message">Message:</label><br>
         <textarea id="message" required></textarea><br><br>
-
         <button id="submit-btn">Submit</button>
+        <div id="statusMessage"></div>
       </form>
     </section>
 
@@ -127,16 +127,15 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
 
-      // DARK MODE TOGGLE - toggles dark mode class on body when checkbox is changed
+      // DARK MODE TOGGLE
       const toggle = document.getElementById("dark-mode-toggle");
 
       toggle.addEventListener("change", function () {
         document.body.classList.toggle("dark-mode", this.checked);
       });
 
-      // SKILLS LIST - dynamically generates list of skills on page load
+      // SKILLS LIST
       const skills = ["HTML", "CSS", "JavaScript", "Git", "GitHub", "PKI", "Linux", "Windows", "Python", "SQL"];
-
       const skillsList = document.getElementById("skills-list");
 
       skills.forEach(skill => {
@@ -145,44 +144,80 @@
         skillsList.appendChild(li);
       });
 
-      // CONTACT FORM - submission handling     
-      const submitBtn = document.getElementById("submit-btn");
+      // CONTACT FORM
+      const form = document.getElementById("contact-form");
+      const statusMessage = document.getElementById("statusMessage");
 
-      submitBtn.addEventListener("click", function (event) {
+      form.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const name = document.getElementById("name").value;
+        statusMessage.textContent = "Sending message...";
 
-        alert("Thank you, " + name + ", your message has been sent!");
+        const button = form.querySelector("button");
+        button.disabled = true;
+
+        setTimeout(() => {
+          statusMessage.textContent = "Message sent successfully!";
+          button.disabled = false;
+          form.reset();
+        }, 2500);
       });
 
-      //if else statement to evealuate if projects or resources are present and update page accordingly
-        const projectItems = document.querySelectorAll("#projects-container .project-item");
-        const projectCount = projectItems.length;
-        const universityDiv = document.getElementById("university-resources");
-        const personalDiv = document.getElementById("personal-projects");
-            if (projectCount < 3) {
-                // Show BOTH sections
-                universityDiv.style.display = "block";
-                personalDiv.style.display = "block";
-            }         
-            else {
-                // Show ONLY personal projects
-                personalDiv.style.display = "block";
-                universityDiv.style.display = "none";
-            }
+      // PROJECT LOGIC
+      const projectItems = document.querySelectorAll("#projects-container .project-item");
+      const projectCount = projectItems.length;
+
+      const universityDiv = document.getElementById("university-resources");
+      const personalDiv = document.getElementById("personal-projects");
+
+      if (projectCount < 3) {
+        universityDiv.style.display = "block";
+        personalDiv.style.display = "block";
+      } 
+      else {
+        personalDiv.style.display = "block";
+        universityDiv.style.display = "none";
+      }
+
+      // WELCOME PROMPT AND COLOR CODING
+      const userName = prompt("What is your name?");
+      const welcomeEl = document.getElementById("welcomeMessage");
+
+      const displayName = userName || "Guest";
+
+      const nameColors = {
+        michael: "blue",
+        sarah: "green",
+        mason: "red",
+        guest: "gray"
+      };
+
+      const color = nameColors[displayName.toLowerCase()] || "black";
+
+      welcomeEl.textContent = "Welcome, " + displayName + "!";
+      welcomeEl.style.color = color;
+
+      // NOTIFICATION
+      setTimeout(() => {
+        const notification = document.createElement("div");
+        notification.textContent = "⚠️ This is a delayed notification message!";
+
+        notification.style.backgroundColor = "#333";
+        notification.style.color = "white";
+        notification.style.padding = "10px";
+        notification.style.position = "fixed";
+        notification.style.top = "0";
+        notification.style.left = "0";
+        notification.style.width = "100%";
+        notification.style.zIndex = "1000";
+
+        document.body.prepend(notification);
+
+        setTimeout(() => notification.remove(), 4000);
+
+      }, 2000);
+
     });
-
-    //  WELCOME PROMPT - prompts user for name and updates welcome message accordingly
-    const userName = prompt("What is your name?");
-
-    if (userName) {
-      document.getElementById("welcomeMessage").textContent =
-        "Welcome, " + userName + "!";
-    } else {
-      document.getElementById("welcomeMessage").textContent =
-        "Welcome, Guest!";
-    }
   </script>
 
 </body>
