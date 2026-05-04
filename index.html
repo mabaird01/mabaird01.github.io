@@ -2,20 +2,27 @@
 <html lang="en">
 <head>
   <!--
-    JavaScript Final Project 3.9 creating and referencing DOM elements
+    JavaScript Final Project 4.8: Persistent Storage
     Author: Michael Baird
-    Date: 4/20/2026
+    Date: 5/04/2026
     Filename: index.html
   -->
   <meta charset="utf-8" />
-  <title>creating and referencing DOM elements</title>
+  <title>Persistent Storage</title>
 
   <link href="styles.css" rel="stylesheet">
 </head>
 
 <body>
-  <!-- notification will be inserted here -->
-  <!-- HEADER -->
+
+  <!-- WELCOME MODAL -->
+  <div id="welcome-modal" class="modal">
+    <div class="modal-content">
+      <p>This page is a work in progress.</p>
+      <button id="close-modal">Close</button>
+    </div>
+  </div>
+
   <header>
     <h1 id="welcomeMessage">Welcome to the Page!</h1>
   </header>
@@ -26,7 +33,7 @@
       <input type="checkbox" id="dark-mode-toggle">
       <span class="slider"></span>
     </label>
-    <span class="toggle-label">Dark Mode</span>
+    <span class="toggle-label">Dark Mode Switch</span>
   </div>
 
   <!-- NAVIGATION -->
@@ -40,7 +47,7 @@
 
   <main>
 
-    <!-- ABOUT SECTION -->
+    <!-- ABOUT -->
     <section id="about">
       <h2>About Me</h2>
       <p>I am a web development student passionate about building interactive websites.</p>
@@ -49,12 +56,10 @@
       <ul id="skills-list"></ul>
     </section>
 
-    <!-- FEATURED CONTENT -->
+    <!-- FEATURED -->
     <section id="featured-content">
-
       <h2>Featured Content</h2>
 
-      <!-- University Resources -->
       <div id="university-resources" class="content-box">
         <h3>University Resources</h3>
         <p>
@@ -64,13 +69,10 @@
         </p>
       </div>
 
-      <!-- Personal Projects -->
       <div id="personal-projects" class="content-box">
-
         <h3>Personal Projects</h3>
 
         <div id="projects-container">
-
           <div class="project-item">
             <div><strong>Course</strong></div>
             <div><strong>Project</strong></div>
@@ -94,131 +96,34 @@
             <div>Database Final Project</div>
             <div>Tracking and updating of Digital Certificates.</div>
           </div>
-
         </div>
       </div>
-
     </section>
 
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT -->
     <section id="contact">
       <h2>Contact Me</h2>
 
       <form id="contact-form">
         <label for="name">Name:</label><br>
         <input type="text" id="name" required><br><br>
+
         <input type="email" name="email" placeholder="Your Email" required /><br>
+
         <label for="message">Message:</label><br>
         <textarea id="message" required></textarea><br><br>
-        <button id="submit-btn">Submit</button>
+
+        <button id="submit-btn" title="Click to send your message!">Submit</button>
         <div id="statusMessage"></div>
       </form>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer>
     — Footer —
   </footer>
 
-  <!-- JavaScript consolidation -->
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-      // DARK MODE TOGGLE
-      const toggle = document.getElementById("dark-mode-toggle");
-
-      toggle.addEventListener("change", function () {
-        document.body.classList.toggle("dark-mode", this.checked);
-      });
-
-      // SKILLS LIST
-      const skills = ["HTML", "CSS", "JavaScript", "Git", "GitHub", "PKI", "Linux", "Windows", "Python", "SQL"];
-      const skillsList = document.getElementById("skills-list");
-
-      skills.forEach(skill => {
-        const li = document.createElement("li");
-        li.textContent = skill;
-        skillsList.appendChild(li);
-      });
-
-      // CONTACT FORM
-      const form = document.getElementById("contact-form");
-      const statusMessage = document.getElementById("statusMessage");
-
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        statusMessage.textContent = "Sending message...";
-
-        const button = form.querySelector("button");
-        button.disabled = true;
-
-        setTimeout(() => {
-          statusMessage.textContent = "Message sent successfully!";
-          button.disabled = false;
-          form.reset();
-        }, 2500);
-      });
-
-      // PROJECT LOGIC
-      const projectItems = document.querySelectorAll("#projects-container .project-item");
-      const projectCount = projectItems.length;
-
-      const universityDiv = document.getElementById("university-resources");
-      const personalDiv = document.getElementById("personal-projects");
-
-      if (projectCount < 3) {
-        universityDiv.style.display = "block";
-        personalDiv.style.display = "block";
-      } 
-      else {
-        personalDiv.style.display = "block";
-        universityDiv.style.display = "none";
-      }
-
-      // WELCOME PROMPT AND COLOR CODING
-      const userName = prompt("What is your name?");
-      const welcomeEl = document.getElementById("welcomeMessage");
-
-      const displayName = userName || "Guest";
-
-      const nameColors = {
-        michael: "blue",
-        sarah: "green",
-        mason: "red",
-        guest: "gray"
-      };
-
-      const color = nameColors[displayName.toLowerCase()] || "black";
-
-      welcomeEl.textContent = "Welcome, " + displayName + "!";
-      welcomeEl.style.color = color;
-
-      // NOTIFICATION
-      setTimeout(() => {
-        const notification = document.createElement("div");
-        notification.textContent = "⚠️ This is a delayed notification message!";
-
-        notification.style.backgroundColor = "#333";
-        notification.style.color = "white";
-        notification.style.padding = "10px";
-        notification.style.position = "fixed";
-        notification.style.top = "0";
-        notification.style.left = "0";
-        notification.style.width = "100%";
-        notification.style.zIndex = "1000";
-
-        document.body.prepend(notification);
-
-        setTimeout(() => notification.remove(), 4000);
-
-      }, 2000);
-
-    });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
