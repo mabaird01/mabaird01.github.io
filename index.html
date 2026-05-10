@@ -1,129 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <!--
-    JavaScript Final Project 4.8: Persistent Storage
-    Author: Michael Baird
-    Date: 5/04/2026
-    Filename: index.html
-  -->
-  <meta charset="utf-8" />
-  <title>Persistent Storage</title>
+  <head>
+    <!--
+      JavaScript Final Project 5.9: Creating Stable Foundations
+      Author: Michael Baird
+      Date: 5/09/2026
+      Filename: index.html
+    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating Stable Foundations</title>
+    <link href="styles.css" rel="stylesheet">
+  </head>
 
-  <link href="styles.css" rel="stylesheet">
-</head>
+  <body>
 
-<body>
-
-  <!-- WELCOME MODAL -->
-  <div id="welcome-modal" class="modal">
-    <div class="modal-content">
-      <p>This page is a work in progress.</p>
-      <button id="close-modal">Close</button>
-    </div>
-  </div>
-
-  <header>
-    <h1 id="welcomeMessage">Welcome to the Page!</h1>
-  </header>
-
-  <!-- DARK MODE TOGGLE -->
-  <div class="toggle-wrapper">
-    <label class="switch">
-      <input type="checkbox" id="dark-mode-toggle">
-      <span class="slider"></span>
-    </label>
-    <span class="toggle-label">Dark Mode Switch</span>
-  </div>
-
-  <!-- NAVIGATION -->
-  <nav>
-    <ul>
-      <li><a href="#">School</a></li>
-      <li><a href="#">Work</a></li>
-      <li><a href="#">Gaming</a></li>
-    </ul>
-  </nav>
-
-  <main>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p>I am a web development student passionate about building interactive websites.</p>
-
-      <h3>Skills</h3>
-      <ul id="skills-list"></ul>
-    </section>
-
-    <!-- FEATURED -->
-    <section id="featured-content">
-      <h2>Featured Content</h2>
-
-      <div id="university-resources" class="content-box">
-        <h3>University Resources</h3>
+    <!-- WELCOME MODAL -->
+    <div id="welcome-modal" class="modal">
+      <div class="modal-content">
         <p>
-          <a href="https://www.ecpi.edu/programs" target="_blank">
-            ECPI Program Home Page
-          </a>
+          This page is a work in progress.
         </p>
+        <button id="close-modal">
+          Close
+        </button>
       </div>
+    </div>
+    <!-- HEADER -->
+    <header>
+      <h1 id="welcomeMessage">
+        Welcome to the Page!
+      </h1>
+    </header>
+    <!-- DARK MODE TOGGLE -->
+    <div class="toggle-wrapper">
+      <label class="switch">
+        <input type="checkbox" id="dark-mode-toggle">
+        <span class="slider"></span>
+      </label>
+      <span class="toggle-label">
+        Dark Mode Switch
+      </span>
+    </div>
 
-      <div id="personal-projects" class="content-box">
-        <h3>Personal Projects</h3>
+    <!-- NAVIGATION -->
+    <nav>
+      <ul>
+        <li>
+          <a href="#">School</a>
+        </li>
+        <li><a href="#">Work</a>
+        </li>
+        <li><a href="#">Gaming</a>
+        </li>
+      </ul>
+    </nav>
 
-        <div id="projects-container">
-          <div class="project-item">
-            <div><strong>Course</strong></div>
-            <div><strong>Project</strong></div>
-            <div><strong>Description</strong></div>
-          </div>
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- ABOUT -->
+      <section id="about">
+        <h2>About Me</h2>
+        <p>
+          I am a web development student passionate about
+          building interactive websites.
+        </p>
+        <h3>Skills</h3>
+        <ul id="skills-list"></ul>
+      </section>
 
-          <div class="project-item">
-            <div>SDC355</div>
-            <div>JavaScript Final Project</div>
-            <div>Page incorporating JavaScript functionality.</div>
-          </div>
-
-          <div class="project-item">
-            <div>SDC260</div>
-            <div>Web Development Final Project</div>
-            <div>This page is the backbone for this project.</div>
-          </div>
-
-          <div class="project-item">
-            <div>SDC200</div>
-            <div>Database Final Project</div>
-            <div>Tracking and updating of Digital Certificates.</div>
-          </div>
+      <!-- FEATURED CONTENT -->
+      <section id="featured-content">
+        <h2>Featured Content</h2>
+        <!-- UNIVERSITY -->
+        <div id="university-resources" class="content-box">
+          <h3>University Resources</h3>
+          <p>
+            <a href="https://www.ecpi.edu/programs" target="_blank">
+              ECPI Program Home Page
+            </a>
+          </p>
         </div>
-      </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2>Contact Me</h2>
+        <!-- PROJECTS -->
+        <div id="personal-projects" class="content-box">
+          <h3>Personal Projects</h3>
 
-      <form id="contact-form">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" required><br><br>
+          <!-- Dynamic project cards render here -->
+          <div id="projects-container"></div>
+        </div>
 
-        <input type="email" name="email" placeholder="Your Email" required /><br>
+      </section>
 
-        <label for="message">Message:</label><br>
-        <textarea id="message" required></textarea><br><br>
+      <!-- CONTACT -->
+      <section id="contact">
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+          <label for="name">
+            Name:
+          </label>
+          <input
+            type="text"
+            id="name"
+            required
+          >
+          <label for="email">
+            Email:
+          </label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Your Email"
+            required
+          >
+          <label for="message">
+            Message:
+          </label>
+          <textarea
+            id="message"
+            required
+          ></textarea>
+          <button
+            id="submit-btn"
+            title="Click to send your message!"
+          >
+            Submit
+          </button>
+          <div id="statusMessage"></div>
+        </form>
+      </section>
+    </main>
 
-        <button id="submit-btn" title="Click to send your message!">Submit</button>
-        <div id="statusMessage"></div>
-      </form>
-    </section>
+    <!-- FOOTER -->
+    <footer>
+      — Footer —
+    </footer>
 
-  </main>
-
-  <footer>
-    — Footer —
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
